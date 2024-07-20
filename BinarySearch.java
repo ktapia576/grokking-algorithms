@@ -5,8 +5,43 @@ public class BinarySearch {
 
         printArr(arr);
         printArr(arr2);
+
+        System.out.println(binarySearch(arr2, 6));
     }
 
+    /**
+     * Binary search for a given array with search key
+     *
+     * @param arr - array to search through
+     * @param key - the value being searched for
+     * @return int index of value found
+     */
+
+    public static int binarySearch(int[] arr, int key){
+        int lowIndex = 0;
+        int highIndex = arr.length - 1;
+
+        int midIndex;
+        int currValue;
+
+        while(lowIndex <= highIndex){
+            midIndex = (lowIndex + highIndex) / 2;
+            currValue = arr[midIndex];
+
+            if(currValue == key){
+                return midIndex;
+            }
+            else if (currValue > key){
+                highIndex = midIndex - 1;
+            }
+            else {
+                lowIndex = midIndex + 1;
+            }
+        }
+
+        return -1; //if not found return negative index
+    }
+    
     /**
      * Prints array in order.
      *
@@ -20,7 +55,7 @@ public class BinarySearch {
     }
 
     /**
-     * initializes array with sorted values from 0 to given length. ex. 0,1,2,3,4,5,6,..., length
+     * initializes array with in order values from 0 to given length. ex. 0,1,2,3,4,5,6,..., length
      *
      * @param length - the max length
      *
