@@ -16,7 +16,8 @@ public class MaxArrayLength {
 
         (Could possibly squeeze more... but haven't tried adding more little by little. Don't know why it won't let the
         theoretical amount of elements work. Especially since freeMemory() shows that there is still bytes left to be
-        used.)
+        used. Could be since other variables are using memory and then the JVM might be garbage collecting when
+        the freeMemory() runs again.)
 
         4gb -> 4,294,967,296 (shown when running code calling maxMemory()... )
         4,294,967,296 bytes/4 bytes per element = 1,073,741,824 elements (java uses 4bytes per element for int[])
