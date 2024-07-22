@@ -11,7 +11,7 @@ public class MaxArrayLength {
         Largest Array Length java can handle with 4gb heap space should be 1,073,741,824 elements since for int[] each
         element takes 4 bytes.
 
-        However, the most elements I was able to allocate was 1,072,168,000. Yes... I took time trying to squeeze the
+        However, the most elements I was able to allocate was 1,072,168,950. Yes... I took time trying to squeeze the
         most I can lol.
 
         (Could possibly squeeze more... but haven't tried adding more little by little. Don't know why it won't let the
@@ -21,7 +21,7 @@ public class MaxArrayLength {
         4gb -> 4,294,967,296 (shown when running code calling maxMemory()... )
         4,294,967,296 bytes/4 bytes per element = 1,073,741,824 elements (java uses 4bytes per element for int[])
          */
-        int[] largestArray = new int[1072168000];
+        int[] largestArray = new int[1072168950];
 
         // Used this method to see how much free memory was left after creating array.
         long heapFreeSize = Runtime.getRuntime().freeMemory();
