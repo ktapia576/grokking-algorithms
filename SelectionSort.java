@@ -1,6 +1,8 @@
+import java.util.Random;
+
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = {32,12,30,3,2,6,10,39,54,104,643,123,1,5,0};
+        int[] arr = createRandomizedArray(10);
 
         System.out.println("Before sort: ");
         printArr(arr);
@@ -11,6 +13,11 @@ public class SelectionSort {
         printArr(arr);
     }
 
+    /**
+     * Sorts array from greatest to least using selection sort
+     *
+     * @param arr - array to be sorted
+     */
     public static void selectionSort(int[] arr){
         int max;
         int swapVariable;   //temporary variable to aid in value swapping
@@ -19,6 +26,7 @@ public class SelectionSort {
 
         for(int i = 0; i < arr.length-1; i++){
             max = arr[i];
+            maxIndex = i;
             for(int j = i + 1; j < arr.length; j++){
                 if(max < arr[j]){
                     max = arr[j];
@@ -31,6 +39,19 @@ public class SelectionSort {
             arr[i] = max;
             arr[maxIndex] = swapVariable;
         }
+    }
+
+    public static int[] createRandomizedArray(int size){
+        int[] arr = new int[size];
+        Random randomizer = new Random();
+
+        for(int i = 0; i < arr.length; i++){
+            // Generate random integer in range 0 to 135
+            int randomInt = randomizer.nextInt(136);
+
+            arr[i]= randomInt;
+        }
+        return arr;
     }
 
     /**
