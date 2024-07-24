@@ -16,7 +16,7 @@ public class SelectionSort {
     /**
      * Sorts array from greatest to least using selection sort
      *
-     * @param arr - array to be sorted
+     * @param arr  array to be sorted
      */
     public static void selectionSort(int[] arr){
         int max;
@@ -41,6 +41,12 @@ public class SelectionSort {
         }
     }
 
+    /**
+     * Create randomized array with given size
+     *
+     * @param size the size of array wanted to be created.
+     * @return int[] array with randomized values with given size.
+     */
     public static int[] createRandomizedArray(int size){
         int[] arr = new int[size];
         Random randomizer = new Random();
