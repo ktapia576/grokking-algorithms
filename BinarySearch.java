@@ -1,12 +1,14 @@
+import java.util.Random;
+
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,6,7,8};
-        int[] arr2 = initializeArrayWithValues(100);
+        int[] arr = createRandomizedArray(20);
+        selectionSort(arr);
 
         printArr(arr);
-        printArr(arr2);
 
-        System.out.println(binarySearch(arr2, 6));
+        //System.out.println(binarySearch(arr, 6));
+        System.out.println(recursionBinarySearch(arr, 0, arr.length - 1, 6));
     }
 
     /**
@@ -41,7 +43,26 @@ public class BinarySearch {
 
         return -1; //if not found return negative index
     }
-    
+
+    public static int recursionBinarySearch(int[] arr, int lowIndex, int highIndex, int key){
+        int midIndex = (lowIndex + highIndex) / 2;
+        if(lowIndex >= highIndex){
+            return -1;
+        }
+
+        if(arr[midIndex] == key){
+            return midIndex;
+        }
+        else if(arr[midIndex] > key){
+            recursionBinarySearch(arr, lowIndex, midIndex - 1, key);
+        }
+        else {
+            recursionBinarySearch(arr, lowIndex + 1, highIndex, key);
+        }
+
+        return -1;
+    }
+
     /**
      * Prints array in order.
      *
@@ -69,5 +90,51 @@ public class BinarySearch {
         }
 
         return arr;
+    }
+
+    /**
+     * Create randomized array with given size
+     *
+     * @param size the size of array wanted to be created.
+     * @return int[] array with randomized values with given size.
+     */
+    public static int[] createRandomizedArray(int size){
+        int[] arr = new int[size];
+        Random randomizer = new Random();
+
+        for(int i = 0; i < arr.length; i++){
+            // Generate random integer in range 0 to 50
+            int randomInt = randomizer.nextInt(51);
+
+            arr[i]= randomInt;
+        }
+        return arr;
+    }
+
+    /**
+     * Sorts array from least to greatest using selection sort
+     *
+     * @param arr  array to be sorted
+     */
+    public static void selectionSort(int[] arr){
+        int swapVariable;   //temporary variable to aid in value swapping
+        int minIndex = 0;
+
+
+        for(int i = 0; i < arr.length-1; i++){
+            minIndex = i;
+            for(int j = i + 1; j < arr.length; j++){
+                if(arr[minIndex] > arr[j]){
+                    minIndex = j;
+                }
+            }
+
+            //only swap if new max value found
+            if(minIndex != i){
+                swapVariable = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = swapVariable;
+            }
+        }
     }
 }
