@@ -19,25 +19,24 @@ public class SelectionSort {
      * @param arr  array to be sorted
      */
     public static void selectionSort(int[] arr){
-        int max;
         int swapVariable;   //temporary variable to aid in value swapping
         int maxIndex = 0;
 
 
         for(int i = 0; i < arr.length-1; i++){
-            max = arr[i];
             maxIndex = i;
             for(int j = i + 1; j < arr.length; j++){
-                if(max < arr[j]){
-                    max = arr[j];
+                if(arr[maxIndex] < arr[j]){
                     maxIndex = j;
                 }
             }
 
-            //swap arr[i] with the new max value
-            swapVariable = arr[i];
-            arr[i] = max;
-            arr[maxIndex] = swapVariable;
+            //only swap if new max value found
+            if(maxIndex != i){
+                swapVariable = arr[i];
+                arr[i] = arr[maxIndex];
+                arr[maxIndex] = swapVariable;
+            }
         }
     }
 
