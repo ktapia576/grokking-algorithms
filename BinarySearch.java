@@ -54,13 +54,11 @@ public class BinarySearch {
             return midIndex;
         }
         else if(arr[midIndex] > key){
-            recursionBinarySearch(arr, lowIndex, midIndex - 1, key);
+            return recursionBinarySearch(arr, lowIndex, highIndex - 1, key);
         }
         else {
-            recursionBinarySearch(arr, lowIndex + 1, highIndex, key);
+            return recursionBinarySearch(arr, lowIndex + 1, highIndex, key);
         }
-
-        return -1;
     }
 
     /**
